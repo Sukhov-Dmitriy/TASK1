@@ -53,6 +53,21 @@ int main()
     delete f[0];
     delete f[1];
     delete [] arr;
+
+    CRat0 a(2);
+    a.data[0] = 1;
+    a.data[1] = 3;
+    a.data[2] = 1;
+    a.data[3] = 2;
+
+    CRat0 b(2);
+    b.data[0] = 1;
+    b.data[1] = 4;
+    b.data[2] = 1;
+    b.data[3] = 2;
+    CRat1 ck;
+    ck = a+b;
+    ck.show();
     return 0;
 }
 

@@ -19,34 +19,14 @@ CRat0::CRat0(int d){
 }
 CRat0::CRat0(){
     dim = 2;
-    cout << "¬ведите размерность( 2 по умолчанию): ";
+    cout << "Enter the dimension: ";
     cin >> dim;
     data = new int[dim*2];
     for(int i = 0; i< dim*2; i++){
         data[i] = 0;
     }
 }
-CRat0 CRat0::operator + (const CRat &B){
-        CRat0 rat(B.dim);
-        for(int i = 0; i< (B.dim*2);i+=2){
-        rat.data[i] = ((this->data[i])*(B.data[i+1]))+((B.data[i])*(this->data[i+1]));
-        rat.data[i+1] = this->data[i+1]*B.data[i+1];
-        }
 
-        rat.dim = B.dim;
-        return rat;
-}
-
-CRat0 CRat0::operator - (const CRat &B){
-        CRat0 rat(B.dim);
-        for(int i = 0; i< (B.dim*2);i+=2){
-        rat.data[i] = ((this->data[i])*(B.data[i+1]))-((B.data[i])*(this->data[i+1]));
-        rat.data[i+1] = this->data[i+1]*B.data[i+1];
-        }
-
-        rat.dim = B.dim;
-        return rat;
-}
 CRat0::~CRat0(){
     if(data != NULL)
     delete [] data;
@@ -55,9 +35,9 @@ CRat0::~CRat0(){
 double CRat0::operator * (const CRat &B){//скал€рное умножение
         double ch = 0, zn = 0, p = 0;
         for(int i = 0; i< this->dim*2;i=+2){
-        ch = (double)(this->data[i]*B.data[i]);
-        zn = (double)(this->data[i+1]*B.data[i+1]);
-        p += ch/zn;
+            ch = (double)(this->data[i]*B.data[i]);
+            zn = (double)(this->data[i+1]*B.data[i+1]);
+            p += ch/zn;
         }
         return p;
 }
