@@ -3,7 +3,14 @@
 #include <string>
 #include "functions.h"
 using namespace std;
-CRat1::CRat1(const CRat1 &other){// êîíñòðóêòîð êîïèðîâàíèÿ
+CRat1::CRat1(const CRat1 &other){// ÃªÃ®Ã­Ã±Ã²Ã°Ã³ÃªÃ²Ã®Ã° ÃªÃ®Ã¯Ã¨Ã°Ã®Ã¢Ã Ã­Ã¨Ã¿
+    this->dim = other.dim;
+    data = new int[dim * 2];
+    for(int i = 0; i < dim; i++){
+        this->data[i] = other.data[i];
+    }
+}
+CRat1::CRat1(const CRat &other){// ÃªÃ®Ã­Ã±Ã²Ã°Ã³ÃªÃ²Ã®Ã° ÃªÃ®Ã¯Ã¨Ã°Ã®Ã¢Ã Ã­Ã¨Ã¿
     this->dim = other.dim;
     data = new int[dim * 2];
     for(int i = 0; i < dim; i++){
@@ -27,7 +34,7 @@ CRat1::CRat1(){
     }
 }
 
-double CRat1::operator * (const CRat &B){//ñêàëÿðíîå óìíîæåíèå
+double CRat1::operator * (const CRat &B){//Ã±ÃªÃ Ã«Ã¿Ã°Ã­Ã®Ã¥ Ã³Ã¬Ã­Ã®Ã¦Ã¥Ã­Ã¨Ã¥
         double ch = 0, zn = 0, p = 0;
         for(int i = 0; i< this->dim*2;i++){
             ch = (double)(this->data[i]*B.data[i]);
@@ -47,7 +54,7 @@ int CRat1::output()
     ofstream fout(outfile.c_str(), ios_base::app);
     for(int i = 0; i < dim*2; i++){
         fout<<"X"<<i/2<<" = ";
-        fout<<data[i]<<"/"<<data[i+1]<<"\n";// Âûâîäèì äàííû â ñòîëáåö
+        fout<<data[i]<<"/"<<data[i+1]<<"\n";// Ã‚Ã»Ã¢Ã®Ã¤Ã¨Ã¬ Ã¤Ã Ã­Ã­Ã» Ã¢ Ã±Ã²Ã®Ã«Ã¡Ã¥Ã¶
         i = i+1;
     }
 fout.close();
